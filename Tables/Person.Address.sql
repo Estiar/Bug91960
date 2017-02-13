@@ -11,8 +11,7 @@ CREATE TABLE [Person].[Address] (
 		[PostalCode]          [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 		[SpatialLocation]     [geography] NULL,
 		[rowguid]             [uniqueidentifier] NOT NULL ROWGUIDCOL,
-		[ModifiedDate]        [datetime] NOT NULL,
-		[dsf]                 [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+		[ModifiedDate]        [datetime] NOT NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 ALTER TABLE [Person].[Address]
