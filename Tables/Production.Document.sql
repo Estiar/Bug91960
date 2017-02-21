@@ -17,7 +17,7 @@ CREATE TABLE [Production].[Document] (
 		[Document]            [varbinary](max) NULL,
 		[rowguid]             [uniqueidentifier] NOT NULL ROWGUIDCOL,
 		[ModifiedDate]        [datetime] NOT NULL,
-		CONSTRAINT [UQ__Document__F73921F793071A63]
+		CONSTRAINT [UQ__Document__F73921F763026E5E]
 		UNIQUE
 		NONCLUSTERED
 		([rowguid])
@@ -104,7 +104,7 @@ GO
 CREATE FULLTEXT INDEX ON [Production].[Document]
 	([DocumentSummary] LANGUAGE 1033, [Document] TYPE COLUMN [FileExtension] LANGUAGE 1033)
 	KEY INDEX [PK_Document_DocumentNode]
-	ON (FILEGROUP [PRIMARY], [AW2008FullTextCatalog])
+	ON (FILEGROUP [PRIMARY], [AW2014FullTextCatalog])
 	WITH CHANGE_TRACKING AUTO, STOPLIST SYSTEM
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Engineering change approval number.', 'SCHEMA', N'Production', 'TABLE', N'Document', 'COLUMN', N'ChangeNumber'

@@ -204,16 +204,6 @@ EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referenc
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
-	ADD CONSTRAINT [FK_SalesOrderHeader_CurrencyRate_CurrencyRateID]
-	FOREIGN KEY ([CurrencyRateID]) REFERENCES [Sales].[CurrencyRate] ([CurrencyRateID])
-ALTER TABLE [Sales].[SalesOrderHeader]
-	CHECK CONSTRAINT [FK_SalesOrderHeader_CurrencyRate_CurrencyRateID]
-
-GO
-EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing CurrencyRate.CurrencyRateID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_CurrencyRate_CurrencyRateID'
-GO
-ALTER TABLE [Sales].[SalesOrderHeader]
-	WITH CHECK
 	ADD CONSTRAINT [FK_SalesOrderHeader_Customer_CustomerID]
 	FOREIGN KEY ([CustomerID]) REFERENCES [Sales].[Customer] ([CustomerID])
 ALTER TABLE [Sales].[SalesOrderHeader]

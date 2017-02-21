@@ -39,7 +39,7 @@ GO
 ALTER TABLE [Person].[Password]
 	WITH CHECK
 	ADD CONSTRAINT [FK_Password_Person_BusinessEntityID]
-	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person2] ([BusinessEntityID])
+	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person] ([BusinessEntityID])
 ALTER TABLE [Person].[Password]
 	CHECK CONSTRAINT [FK_Password_Person_BusinessEntityID]
 

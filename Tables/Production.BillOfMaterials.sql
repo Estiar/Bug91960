@@ -27,6 +27,7 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'Nonclustered index created by a primary key constraint.', 'SCHEMA', N'Production', 'TABLE', N'BillOfMaterials', 'INDEX', N'PK_BillOfMaterials_BillOfMaterialsID'
 GO
 ALTER TABLE [Production].[BillOfMaterials]
+	WITH NOCHECK
 	ADD
 	CONSTRAINT [CK_BillOfMaterials_BOMLevel]
 	CHECK

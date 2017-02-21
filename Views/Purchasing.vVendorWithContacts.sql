@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vVendorWithContacts
 
 CREATE VIEW [Purchasing].[vVendorWithContacts] AS 
 SELECT 
@@ -22,7 +21,7 @@ FROM [Purchasing].[Vendor] v
     ON bec.[BusinessEntityID] = v.[BusinessEntityID]
 	INNER JOIN [Person].ContactType ct
 	ON ct.[ContactTypeID] = bec.[ContactTypeID]
-	INNER JOIN [Person].[Person2] p
+	INNER JOIN [Person].[Person] p
 	ON p.[BusinessEntityID] = bec.[PersonID]
 	LEFT OUTER JOIN [Person].[EmailAddress] ea
 	ON ea.[BusinessEntityID] = p.[BusinessEntityID]

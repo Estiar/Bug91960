@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vSalesPerson
 
 CREATE VIEW [Sales].[vSalesPerson] 
 AS 
@@ -31,7 +30,7 @@ SELECT
 FROM [Sales].[SalesPerson] s
     INNER JOIN [HumanResources].[Employee] e 
     ON e.[BusinessEntityID] = s.[BusinessEntityID]
-	INNER JOIN [Person].[Person2] p
+	INNER JOIN [Person].[Person] p
 	ON p.[BusinessEntityID] = s.[BusinessEntityID]
     INNER JOIN [Person].[BusinessEntityAddress] bea 
     ON bea.[BusinessEntityID] = s.[BusinessEntityID] 

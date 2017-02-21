@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vPersonDemographics
 
 CREATE VIEW [Sales].[vPersonDemographics] 
 AS 
@@ -31,7 +30,7 @@ SELECT
         HomeOwnerFlag[1]', 'bit') AS [HomeOwnerFlag] 
     ,[IndividualSurvey].[ref].[value](N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/IndividualSurvey"; 
         NumberCarsOwned[1]', 'integer') AS [NumberCarsOwned] 
-FROM [Person].[Person2] p 
+FROM [Person].[Person] p 
 CROSS APPLY p.[Demographics].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/IndividualSurvey"; 
     /IndividualSurvey') AS [IndividualSurvey](ref) 
 WHERE [Demographics] IS NOT NULL;

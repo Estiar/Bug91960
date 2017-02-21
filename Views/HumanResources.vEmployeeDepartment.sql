@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vEmployeeDepartment
 
 CREATE VIEW [HumanResources].[vEmployeeDepartment] 
 AS 
@@ -17,7 +16,7 @@ SELECT
     ,d.[GroupName] 
     ,edh.[StartDate] 
 FROM [HumanResources].[Employee] e
-	INNER JOIN [Person].[Person2] p
+	INNER JOIN [Person].[Person] p
 	ON p.[BusinessEntityID] = e.[BusinessEntityID]
     INNER JOIN [HumanResources].[EmployeeDepartmentHistory] edh 
     ON e.[BusinessEntityID] = edh.[BusinessEntityID] 

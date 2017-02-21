@@ -2,6 +2,7 @@ SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
 -- Alter Function ufnGetContactInformation
+-- Alter Function ufnGetContactInformation
 
 CREATE FUNCTION [dbo].[ufnGetContactInformation](@PersonID int)
 RETURNS @retContactInformation TABLE 
@@ -24,7 +25,7 @@ BEGIN
 			INSERT INTO @retContactInformation
 				SELECT @PersonID, p.FirstName, p.LastName, e.[JobTitle], 'Employee'
 				FROM [HumanResources].[Employee] AS e
-					INNER JOIN [Person].[Person2] p
+					INNER JOIN [Person].[Person] p
 					ON p.[BusinessEntityID] = e.[BusinessEntityID]
 				WHERE e.[BusinessEntityID] = @PersonID;
 
@@ -39,7 +40,7 @@ BEGIN
 					ON bec.[BusinessEntityID] = v.[BusinessEntityID]
 					INNER JOIN [Person].ContactType ct
 					ON ct.[ContactTypeID] = bec.[ContactTypeID]
-					INNER JOIN [Person].[Person2] p
+					INNER JOIN [Person].[Person] p
 					ON p.[BusinessEntityID] = bec.[PersonID]
 				WHERE bec.[PersonID] = @PersonID;
 		
@@ -54,17 +55,17 @@ BEGIN
 					ON bec.[BusinessEntityID] = s.[BusinessEntityID]
 					INNER JOIN [Person].ContactType ct
 					ON ct.[ContactTypeID] = bec.[ContactTypeID]
-					INNER JOIN [Person].[Person2] p
+					INNER JOIN [Person].[Person] p
 					ON p.[BusinessEntityID] = bec.[PersonID]
 				WHERE bec.[PersonID] = @PersonID;
 
-		IF EXISTS(SELECT * FROM [Person].[Person2] AS p
+		IF EXISTS(SELECT * FROM [Person].[Person] AS p
 					INNER JOIN [Sales].[Customer] AS c
 					ON c.[PersonID] = p.[BusinessEntityID]
 					WHERE p.[BusinessEntityID] = @PersonID AND c.[StoreID] IS NULL) 
 			INSERT INTO @retContactInformation
 				SELECT @PersonID, p.FirstName, p.LastName, NULL, 'Consumer' 
-				FROM [Person].[Person2] AS p
+				FROM [Person].[Person] AS p
 					INNER JOIN [Sales].[Customer] AS c
 					ON c.[PersonID] = p.[BusinessEntityID]
 					WHERE p.[BusinessEntityID] = @PersonID AND c.[StoreID] IS NULL; 

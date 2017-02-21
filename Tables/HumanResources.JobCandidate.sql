@@ -47,7 +47,7 @@ GO
 CREATE FULLTEXT INDEX ON [HumanResources].[JobCandidate]
 	([Resume] LANGUAGE 1033)
 	KEY INDEX [PK_JobCandidate_JobCandidateID]
-	ON (FILEGROUP [PRIMARY], [AW2008FullTextCatalog])
+	ON (FILEGROUP [PRIMARY], [AW2014FullTextCatalog])
 	WITH CHANGE_TRACKING AUTO, STOPLIST SYSTEM
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Employee identification number if applicant was hired. Foreign key to Employee.BusinessEntityID.', 'SCHEMA', N'HumanResources', 'TABLE', N'JobCandidate', 'COLUMN', N'BusinessEntityID'

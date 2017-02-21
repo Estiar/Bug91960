@@ -70,7 +70,7 @@ GO
 CREATE FULLTEXT INDEX ON [Production].[ProductReview]
 	([Comments] LANGUAGE 1033)
 	KEY INDEX [PK_ProductReview_ProductReviewID]
-	ON (FILEGROUP [PRIMARY], [AW2008FullTextCatalog])
+	ON (FILEGROUP [PRIMARY], [AW2014FullTextCatalog])
 	WITH CHANGE_TRACKING AUTO, STOPLIST SYSTEM
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Reviewer''s comments', 'SCHEMA', N'Production', 'TABLE', N'ProductReview', 'COLUMN', N'Comments'

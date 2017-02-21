@@ -18,7 +18,8 @@ CREATE TABLE [HumanResources].[Employee] (
 		[SickLeaveHours]        [smallint] NOT NULL,
 		[CurrentFlag]           [dbo].[Flag] NOT NULL,
 		[rowguid]               [uniqueidentifier] NOT NULL ROWGUIDCOL,
-		[ModifiedDate]          [datetime] NOT NULL
+		[ModifiedDate]          [datetime] NOT NULL,
+		[bv]                    [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [HumanResources].[Employee]
@@ -144,7 +145,7 @@ GO
 ALTER TABLE [HumanResources].[Employee]
 	WITH CHECK
 	ADD CONSTRAINT [FK_Employee_Person_BusinessEntityID]
-	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person2] ([BusinessEntityID])
+	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person] ([BusinessEntityID])
 ALTER TABLE [HumanResources].[Employee]
 	CHECK CONSTRAINT [FK_Employee_Person_BusinessEntityID]
 

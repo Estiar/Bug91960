@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter Trigger iduSalesOrderDetail
 
 CREATE TRIGGER [Sales].[iduSalesOrderDetail] ON [Sales].[SalesOrderDetail] 
 AFTER INSERT, DELETE, UPDATE AS 
@@ -39,7 +38,7 @@ BEGIN
                 INNER JOIN [Sales].[SalesOrderHeader] 
                 ON inserted.[SalesOrderID] = [Sales].[SalesOrderHeader].[SalesOrderID];
 
-            UPDATE [Person].[Person2] 
+            UPDATE [Person].[Person] 
             SET [Demographics].modify('declare default element namespace 
                 "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/IndividualSurvey"; 
                 replace value of (/IndividualSurvey/TotalPurchaseYTD)[1] 
@@ -49,7 +48,7 @@ BEGIN
                 ON inserted.[SalesOrderID] = SOH.[SalesOrderID] 
                 INNER JOIN [Sales].[Customer] AS C
                 ON SOH.[CustomerID] = C.[CustomerID]
-            WHERE C.[PersonID] = [Person].[Person2].[BusinessEntityID];
+            WHERE C.[PersonID] = [Person].[Person].[BusinessEntityID];
         END;
 
         -- Update SubTotal in SalesOrderHeader record. Note that this causes the 
@@ -61,7 +60,7 @@ BEGIN
                 WHERE [Sales].[SalesOrderHeader].[SalesOrderID] = [Sales].[SalesOrderDetail].[SalesOrderID])
         WHERE [Sales].[SalesOrderHeader].[SalesOrderID] IN (SELECT inserted.[SalesOrderID] FROM inserted);
 
-        UPDATE [Person].[Person2] 
+        UPDATE [Person].[Person] 
         SET [Demographics].modify('declare default element namespace 
             "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/IndividualSurvey"; 
             replace value of (/IndividualSurvey/TotalPurchaseYTD)[1] 
@@ -71,7 +70,7 @@ BEGIN
             ON deleted.[SalesOrderID] = [Sales].[SalesOrderHeader].[SalesOrderID] 
             INNER JOIN [Sales].[Customer]
             ON [Sales].[Customer].[CustomerID] = [Sales].[SalesOrderHeader].[CustomerID]
-        WHERE [Sales].[Customer].[PersonID] = [Person].[Person2].[BusinessEntityID];
+        WHERE [Sales].[Customer].[PersonID] = [Person].[Person].[BusinessEntityID];
     END TRY
     BEGIN CATCH
         EXECUTE [dbo].[uspPrintError];

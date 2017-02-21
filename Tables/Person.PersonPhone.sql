@@ -31,7 +31,7 @@ GO
 ALTER TABLE [Person].[PersonPhone]
 	WITH CHECK
 	ADD CONSTRAINT [FK_PersonPhone_Person_BusinessEntityID]
-	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person2] ([BusinessEntityID])
+	FOREIGN KEY ([BusinessEntityID]) REFERENCES [Person].[Person] ([BusinessEntityID])
 ALTER TABLE [Person].[PersonPhone]
 	CHECK CONSTRAINT [FK_PersonPhone_Person_BusinessEntityID]
 

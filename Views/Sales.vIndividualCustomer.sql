@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vIndividualCustomer
 
 CREATE VIEW [Sales].[vIndividualCustomer] 
 AS 
@@ -24,7 +23,7 @@ SELECT
     ,a.[PostalCode]
     ,[CountryRegionName] = cr.[Name]
     ,p.[Demographics]
-FROM [Person].[Person2] p
+FROM [Person].[Person] p
     INNER JOIN [Person].[BusinessEntityAddress] bea 
     ON bea.[BusinessEntityID] = p.[BusinessEntityID] 
     INNER JOIN [Person].[Address] a 

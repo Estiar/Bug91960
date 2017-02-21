@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vAdditionalContactInfo
 
 CREATE VIEW [Person].[vAdditionalContactInfo] 
 AS 
@@ -45,7 +44,7 @@ SELECT
         (act:eMail/act:SpecialInstructions/act:telephoneNumber/act:number)[1]', 'nvarchar(50)') AS [EMailTelephoneNumber] 
     ,[rowguid] 
     ,[ModifiedDate]
-FROM [Person].[Person2]
+FROM [Person].[Person]
 OUTER APPLY [AdditionalContactInfo].nodes(
     'declare namespace ci="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ContactInfo"; 
     /ci:AdditionalContactInfo') AS ContactInfo(ref) 

@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vSalesPersonSalesByFiscalYears
 
 CREATE VIEW [Sales].[vSalesPersonSalesByFiscalYears] 
 AS 
@@ -27,7 +26,7 @@ FROM (SELECT
         ON sp.[TerritoryID] = st.[TerritoryID] 
         INNER JOIN [HumanResources].[Employee] e 
         ON soh.[SalesPersonID] = e.[BusinessEntityID] 
-		INNER JOIN [Person].[Person2] p
+		INNER JOIN [Person].[Person] p
 		ON p.[BusinessEntityID] = sp.[BusinessEntityID]
 	 ) AS soh 
 PIVOT 

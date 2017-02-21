@@ -1,7 +1,6 @@
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
--- Alter View vEmployee
 
 CREATE VIEW [HumanResources].[vEmployee] 
 AS 
@@ -25,7 +24,7 @@ SELECT
     ,cr.[Name] AS [CountryRegionName] 
     ,p.[AdditionalContactInfo]
 FROM [HumanResources].[Employee] e
-	INNER JOIN [Person].[Person2] p
+	INNER JOIN [Person].[Person] p
 	ON p.[BusinessEntityID] = e.[BusinessEntityID]
     INNER JOIN [Person].[BusinessEntityAddress] bea 
     ON bea.[BusinessEntityID] = e.[BusinessEntityID] 

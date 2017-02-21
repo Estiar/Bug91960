@@ -36,7 +36,7 @@ EXEC sp_addextendedproperty N'MS_Description', N'Primary key for AWBuildVersion 
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date and time the record was last updated.', 'SCHEMA', N'dbo', 'TABLE', N'AWBuildVersion', 'COLUMN', N'VersionDate'
 GO
-EXEC sp_addextendedproperty N'MS_Description', N'Current version number of the AdventureWorks 2012 sample database. ', 'SCHEMA', N'dbo', 'TABLE', N'AWBuildVersion', NULL, NULL
+EXEC sp_addextendedproperty N'MS_Description', N'Current version number of the AdventureWorks 2014 sample database. ', 'SCHEMA', N'dbo', 'TABLE', N'AWBuildVersion', NULL, NULL
 GO
 ALTER TABLE [dbo].[AWBuildVersion] SET (LOCK_ESCALATION = TABLE)
 GO
